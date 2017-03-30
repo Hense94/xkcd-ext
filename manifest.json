@@ -1,36 +1,35 @@
 {
-  "name": "xkcd optimizer",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "description": "Improved xkcd reading",
-  "homepage_url": "https://xkcd.com",
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  },
-  "default_locale": "en",
-  "permissions": [
-    "https://xkcd.com/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://xkcd.com/*"
-      ],
-      "js": [
-        "js/jquery/jquery.min.js",
-        "src/inject/comic.js"
-      ]
+    "name": "xkcd optimizer",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Improved xkcd reading",
+    "homepage_url": "https://xkcd.com",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
     },
-    {
-      "matches": [
-        "https://what-if.xkcd.com/*"
-      ],
-      "js": [
-        "js/jquery/jquery.min.js",
-        "src/inject/whatif.js"
-      ]
-    }
-  ]
+    "content_scripts": [
+        {
+            "matches": [
+                "https://xkcd.com/*"
+            ],
+            "css": [
+                "css/comic.css"
+            ],
+            "js": [
+                "js/jquery/jquery.min.js",
+                "src/inject/comic.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://what-if.xkcd.com/*"
+            ],
+            "js": [
+                "js/jquery/jquery.min.js",
+                "src/inject/whatif.js"
+            ]
+        }
+    ]
 }

@@ -1,12 +1,15 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
 	//Greeting message
 	console.log("xkcd-ext: Comic-module succesfully loaded!");
 
+	//Extract title-text
+	var titleText = getTitle();
+
 	//Put title text below image
-	jQuery('#comic').after('<p>' + jQuery('#comic').children()[0].title + '<p>')
+	$('#comic').after('<p class="title-text">' + titleText + '<p>')
 
 	//Enable left, and right key navigation
-	jQuery(document).keydown(function(e) {
+	$(document).keydown(function(e) {
 		var elNum = 0;
 
 		switch (e.which) {
@@ -22,7 +25,21 @@ jQuery(document).ready(function() {
 				break;
 		}
 
+		//0 == false
 		if (elNum)
-			jQuery('.comicNav')[0].children[elNum].children[0].click();
+			$('.comicNav')[0].children[elNum].children[0].click();
 	});
+
+	function getTitle() {
+		var title;
+
+		//Naive way; works most of the time
+		title = $('#comic').children()[0].title;
+
+		if (!title)
+			//No title was found, perhaps the comic is a link?
+			title = $('#comic').children()[0].children[0].title;
+
+		return title;
+	}
 });
